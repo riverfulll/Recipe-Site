@@ -1,0 +1,7 @@
+gunicorn==20.1.0
+django==4.2.17
+djangorestframework==3.14.0
+django-grappelli==3.0.2      
+Pillow==10.0.1               
+psycopg2==2.9.7              
+mysqlclient==2.1.1           

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}{{ recipe.title }}{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2>{{ recipe.title }}</h2>
+            </div>
+            <div class="card-body">
+                {% if recipe.image %}
+                <div class="text-center mb-3">
+                    <img src="{{ recipe.image.url }}" alt="Изображение рецепта" class="img-fluid">
+                </div>
+                {% endif %}
+                <p><strong>Описание:</strong> {{ recipe.description }}</p>
+                <p><strong>Шаги приготовления:</strong></p>
+                <p>{{ recipe.steps }}</p>
+                <p><strong>Время приготовления:</strong> {{ recipe.cooking_time }} минут</p>
+                <p><strong>Ингредиенты:</strong></p>
+                <ul>
+                    {% for ingredient in recipe.ingredients.all %}
+                    <li>{{ ingredient.name }}</li>
+                    {% endfor %}
+                </ul>
+                <p><strong>Категории:</strong></p>
+                <ul>
+                    {% for category in recipe.categories.all %}
+                    <li>{{ category.name }}</li>
+                    {% endfor %}
+                </ul>
+                <p><strong>Автор:</strong> {{ recipe.author }}</p>
+                <a href="{% url 'recipe_edit' recipe.id %}" class="btn btn-secondary">Редактировать</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
